@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.GrainClasses", "GameOfLife.GrainClasses\GameOfLife.GrainClasses.csproj", "{63E0E4BB-69E5-4854-9536-703F80601C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.GrainInterfaces", "GameOfLife.GrainInterfaces\GameOfLife.GrainInterfaces.csproj", "{B642B60C-CBA8-40BD-B5DD-1C1E87DD6489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Silo", "GameOfLife.Silo\GameOfLife.Silo.csproj", "{BCF16FFE-EFC6-4920-ABFA-0B01A371C8A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Client", "GameOfLife.Client\GameOfLife.Client.csproj", "{62A6C365-7DEE-4087-9086-1CDA040295E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63E0E4BB-69E5-4854-9536-703F80601C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E0E4BB-69E5-4854-9536-703F80601C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E0E4BB-69E5-4854-9536-703F80601C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E0E4BB-69E5-4854-9536-703F80601C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B642B60C-CBA8-40BD-B5DD-1C1E87DD6489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B642B60C-CBA8-40BD-B5DD-1C1E87DD6489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B642B60C-CBA8-40BD-B5DD-1C1E87DD6489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B642B60C-CBA8-40BD-B5DD-1C1E87DD6489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF16FFE-EFC6-4920-ABFA-0B01A371C8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF16FFE-EFC6-4920-ABFA-0B01A371C8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF16FFE-EFC6-4920-ABFA-0B01A371C8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF16FFE-EFC6-4920-ABFA-0B01A371C8A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
