@@ -16,5 +16,6 @@
       <ProjectReference Include="..\GameOfLife.GrainClasses\GameOfLife.GrainClasses.csproj" />
       <ProjectReference Include="..\GameOfLife.GrainInterfaces\GameOfLife.GrainInterfaces.csproj" />
     </ItemGroup>
-
+    
+    
 </Project>

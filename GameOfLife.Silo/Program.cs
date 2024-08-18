@@ -6,6 +6,7 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args)
     {
         silo.UseLocalhostClustering()
             .ConfigureLogging(logging => logging.AddConsole());
+        silo.UseDashboard(options => { });
     })
     .UseConsoleLifetime();
 using IHost host = builder.Build();

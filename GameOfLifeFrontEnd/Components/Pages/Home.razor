@@ -1,0 +1,46 @@
+﻿@page "/"
+@attribute [StreamRendering(true)]
+@using System.Text.Json
+
+<PageTitle>Game of Life</PageTitle>
+<h3 style="text-align:center"> Distributed Game Of Life </h3>
+@if (currentGrid != null)
+{
+<table>
+    @for (int i = 0; i < currentGrid.Count; i++)
+    {
+    <tr>
+        @for (int j = 0; j < currentGrid[i].Count; j++)
+        {
+        <td class="@(currentGrid[i][j] ? "alive" : "dead")"></td>
+        }
+    </tr>
+    }
+</table>
+}
+
+
+
+
+@inject HttpClient httpClient
+@code {
+    private List<List<bool>> currentGrid;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var stream = await httpClient.GetStreamAsync("gol");
+        await foreach (var result in JsonSerializer.DeserializeAsyncEnumerable<List<List<bool>>>(stream))
+        {
+            currentGrid = result;
+            await Task.Delay(150);
+            try
+            {
+                InvokeAsync(StateHasChanged);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error updating UI: {ex.Message}");
+            }
+        }
+    }
+}

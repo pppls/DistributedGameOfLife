@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Silo", "GameOfLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Client", "GameOfLife.Client\GameOfLife.Client.csproj", "{62A6C365-7DEE-4087-9086-1CDA040295E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.ApiControllers", "GameOfLife.ApiControllers\GameOfLife.ApiControllers.csproj", "{61534EF2-442C-4E23-832C-E3A1FBA6B8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeFrontEnd", "GameOfLifeFrontEnd\GameOfLifeFrontEnd.csproj", "{FA29A22C-A1AD-49AC-B17F-44759B849DE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A6C365-7DEE-4087-9086-1CDA040295E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61534EF2-442C-4E23-832C-E3A1FBA6B8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61534EF2-442C-4E23-832C-E3A1FBA6B8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61534EF2-442C-4E23-832C-E3A1FBA6B8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61534EF2-442C-4E23-832C-E3A1FBA6B8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA29A22C-A1AD-49AC-B17F-44759B849DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA29A22C-A1AD-49AC-B17F-44759B849DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA29A22C-A1AD-49AC-B17F-44759B849DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA29A22C-A1AD-49AC-B17F-44759B849DE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

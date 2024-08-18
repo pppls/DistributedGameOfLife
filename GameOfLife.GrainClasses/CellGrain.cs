@@ -1,5 +1,7 @@
-﻿using GameOfLife.GrainInterfaces;
+﻿using System.Diagnostics;
+using GameOfLife.GrainInterfaces;
 using Microsoft.Extensions.Logging;
+using Orleans.Concurrency;
 
 namespace GameOfLife.GrainClasses;
 
@@ -32,7 +34,7 @@ public class CellGrain : Grain, IGrainBase, ICellGrain
 
         var filteredNeighborPositions =
             neighborPositions
-                .Where(coord => coord is { x: >=0, x: < 10, y: >= 0, y: < 10 })
+                .Where(coord => coord is { x: >=0, x: < 100, y: >= 0, y: < 100 })
                 .ToList();
         // Get references to neighbor grains
         foreach (var (nx, ny) in filteredNeighborPositions)
@@ -40,60 +42,41 @@ public class CellGrain : Grain, IGrainBase, ICellGrain
             long neighborId = ((long)nx << 32) | (uint)ny;
             neighbors.Add(neighborId);
         }
-        // _logger.LogInformation($"Cell coord: {x}, {y}");
-        // filteredNeighborPositions.ForEach(coord => _logger.LogInformation($"Neighbor coord: {coord.x}, {coord.y}"));
-        //
-        // //_logger.LogInformation($"Cell ID: {this.GetPrimaryKeyLong()}");
-        // logger.LogInformation($"neighbourcount: {neighbors.Count()}");
+
     }
     
-    public Task SendStatus()
+    public async Task<bool> SendStatus(int height, int width)
     {
-        // _logger.LogInformation($"cell {x}, {y} sending alive status");
-        Task.WhenAll(neighbors.Select(n => GrainFactory.GetGrain<ICellGrain>(n).ReceiveNeighborStatus(this._wasAlive)));
-        return Task.CompletedTask;
-    }
+        var tasks = await Task.WhenAll(neighbors.Select(n => GrainFactory.GetGrain<ICellGrain>(n).GetStatus()));
+        Func<int, bool> f = (sumAlive) =>
+        {
+            switch (sumAlive)
+            {
+                case 0:
+                case 1:
+                    return false;
+                case 2:
+                    return _wasAlive;
+                case 3:
+                    return true;
+                case > 4:
+                    return false;
+            }
 
+            return false;
+        };
+        var isAlive = f(tasks.Count(x => x));
+        return isAlive;
+    }
+    
+    public Task<bool> GetStatus()
+    {
+        return Task.FromResult(_wasAlive);
+    }
+    
     public Task SetWasAlive(bool wasAlive)
     {
         _wasAlive = wasAlive;
-        return Task.CompletedTask;
-    }
-    
-    public Task ReceiveNeighborStatus(bool alive)
-    {
-        // _logger.LogInformation($"cell {x}, {y} receiving neighbour status");
-        neighborUpdatesReceived += 1;
-        if (alive)
-        {
-            neighborAliveSum += 1; 
-        }
-
-        if (neighborUpdatesReceived == neighbors.Count())
-        {
-            Func<int, bool> f = (sumAlive) =>
-            {
-                switch (sumAlive)
-                {
-                    case 0:
-                    case 1:
-                        return false;
-                    case 2:
-                        return _wasAlive;
-                    case 3:
-                        return true;
-                    case > 4:
-                        return false;
-                }
-
-                return false;
-            };
-
-            GrainFactory.GetGrain<IGridGrain>(0).CellUpdate(this.x, this.y, f(neighborAliveSum));
-            neighborUpdatesReceived = 0;
-            neighborAliveSum = 0;
-        }
-
         return Task.CompletedTask;
     }
 }
